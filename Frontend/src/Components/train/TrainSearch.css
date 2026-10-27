@@ -1,0 +1,258 @@
+/* src/Components/train/TrainSearch.css */
+.train-search-container {
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 20px; */
+}
+
+.search-card {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 01);
+  width: 100%;
+  max-width: 600px;
+}
+
+.search-card h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.search-subtitle {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #666;
+  font-size: 14px;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 15px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+
+.search-button {
+  padding: 15px;
+  background: linear-gradient(135deg, #6c81df 0%, #8a65ae 100%);
+  border-radius: 15px;
+  color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.search-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Search Results Styles*/
+.search-results-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #c0cbf9 0%, #e5d5f6 100%);
+  padding: 20px;
+}
+
+.results-header {
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.results-header h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.back-button {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+.back-button:hover {
+  background: #5a67d8;
+}
+
+.trains-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0 auto;
+}
+
+.train-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.train-card:hover {
+  transform: translateY(-3px);
+}
+
+.train-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e1e5e9;
+}
+.train-header h3 {
+  color: #333;
+  font-size: 20px;
+  margin: 0;
+}
+.train-number {
+  background: #667eea;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.train-details {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.route-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.station {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.station strong {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.station span {
+  font-size: 14px;
+  color: #666;
+  background: #f8f9fa;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+
+.duration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.journey-line {
+  width: 100px;
+  height: 2px;
+  background: #667eea;
+  margin: 5px 0;
+  position: relative;
+}
+.train-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+.info-item .label {
+  color: #666;
+  font-size: 14px;
+}
+
+.info-item .value {
+  color: #333;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.info-item.fare .value {
+  color: #e74c3c;
+  font-size: 18px;
+}
+.train-actions {
+  text-align: right;
+}
+
+.book-button {
+  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.book-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+}

@@ -1,0 +1,51 @@
+.header-logo img {
+  display: block;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+.logo-name{
+  display:  flex;
+  align-items: center;
+}
+.app-header {
+  background: rgba(80, 241, 241, 0.1);
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background: rgba(80, 241, 241, 0.165);
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.nav-button:hover {
+  background: rgba(80, 241, 241, 0.205);
+}
+
+.nav-button.active {
+  background: rgba(80, 241, 241, 0.3);
+  font-weight: bold;
+}

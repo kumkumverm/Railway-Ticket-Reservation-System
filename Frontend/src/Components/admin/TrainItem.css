@@ -1,0 +1,53 @@
+/*  src/Components/admin/TrainItem.css*/
+.train-item {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  transition: transform 0.2s ease;
+}
+
+.train-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.train-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.train-info strong {
+  color: #2c3e50;
+  font-size: 16px;
+}
+
+.train-info span {
+  color: #666;
+  font-size: 14px;
+  display: block;
+}
+
+.delete-train-btn {
+  background: rgb(203, 200, 200);
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);  
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+  margin-left: 15px;
+}
+
+.delete-train-btn:hover {
+  color: #667eea;
+}

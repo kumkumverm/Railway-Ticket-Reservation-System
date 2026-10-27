@@ -1,0 +1,73 @@
+# =========================================================
+# Root .gitignore — Railway Reservation System (full-stack)
+# Backend (Spring Boot) + Frontend (Vite) + tooling
+# =========================================================
+
+# ---------- Help files ----------
+HELP.md
+
+# ---------- Java / Maven (Backend) ----------
+target/
+*.class
+*.jar
+*.war
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/timing.properties
+
+# keep target/ exception rules (harmless, from Spring Initializr)
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# ---------- Spring Boot DevTools / STS ----------
+.springBeans
+.sts4-cache
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+
+# ---------- IntelliJ IDEA ----------
+.idea
+*.iws
+*.iml
+*.ipr
+
+# ---------- NetBeans ----------
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# ---------- VS Code ----------
+.vscode/
+
+# ---------- Node / Frontend (belt & suspenders — Frontend/.gitignore also covers) ----------
+**/node_modules/
+**/dist/
+**/dist-ssr/
+**/*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---------- Secrets / local config (IMPORTANT) ----------
+.env
+.env.local
+.env.*.local
+**/application-local.properties
+**/application-secret.properties
+
+# ---------- Logs ----------
+logs/
+*.log
+
+# ---------- OS junk ----------
+.DS_Store
+Thumbs.db
+desktop.ini

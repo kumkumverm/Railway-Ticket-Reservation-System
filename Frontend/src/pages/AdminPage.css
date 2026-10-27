@@ -1,0 +1,186 @@
+/* src/pages/AdminPage.css */
+.admin-container{
+    background: linear-gradient(135deg, #c0cbf9 0%, #e5d5f6 100%);
+min-height: 100vh;
+padding: 20px;
+}
+.admin-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+background-color: white;
+border-radius: 20px;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.admin-header h1 {
+  color: #2c3e50;
+  margin: 0;
+}
+
+.back-btn {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #5a6268;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.admin-tabs button {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.admin-tabs button:hover {
+  color: #667eea;
+}
+
+.admin-tabs button.active {
+  border-bottom-color: #667eea;
+  color: #667eea;
+  font-weight: 600;
+}
+
+.admin-content {
+  min-height: 400px;
+}
+
+.bookings-tab h2,
+.trains-tab h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.trains-header {
+  display: flex;
+  justify-content: space-between; 
+   align-items: center; 
+  margin-bottom: 20px;
+}
+.trains-header h2{
+  padding-top: 10px;
+}
+.add-train-btn {
+background: rgb(229, 226, 226);
+  color: black;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+  padding: 10px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.3s ease;
+  margin-left: 10px;
+
+}
+
+.add-train-btn:hover {
+  color: #219653;
+}
+
+
+.bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.booking-item {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.booking-item:hover {
+  transform: translateY(-2px);
+}
+
+.booking-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.booking-info strong {
+  color: #2c3e50;
+  font-size: 16px;
+}
+
+.booking-info span {
+  color: #666;
+  font-size: 14px;
+  display: block;
+}
+
+.booking-contact {
+  color: #3498db;
+  font-size: 14px;
+  text-align: right;
+}
+
+/* TrainItem components will be styled by TrainItem.css */
+.trains-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.no-data {
+  text-align: center;
+  padding: 50px;
+  color: #7f8c8d;
+  font-size: 18px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.admin-footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 2px solid #e9ecef;
+  text-align: center;
+}
+
+.admin-footer p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #27ae60;
+  background: rgb(203, 200, 200);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: inline-block;
+}
