@@ -1,7 +1,7 @@
 // src/Components/auth/Login.jsx
-import  { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { authApi } from '../../services/api';  
+import { authApi } from '../../services/api';
 import './Auth.css';
 
 const Login = () => {
@@ -10,8 +10,8 @@ const Login = () => {
         email: '',
         password: ''
     });
-    const [error, setError] = useState('');  
-    const [loading, setLoading] = useState(false);  
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -21,14 +21,14 @@ const Login = () => {
         }));
     };
 
-    const handleSubmit = async (e) => {  // ← CHANGE TO async
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
         setError('');
-        
+
         try {
             const response = await authApi.login(formData.email, formData.password);
-            
+
             if (response.success) {
                 alert('Login successful!');
                 navigate(response.role === 'ADMIN' ? '/admin' : '/dashboard');
@@ -38,23 +38,24 @@ const Login = () => {
         } catch (error) {
             console.error('Login error:', error);
             setError('Network error. Please try again.');
+        } finally {
+            setLoading(false);
         }
-        setLoading(false);
     };
-    
+
     const handleRegisterClick = (e) => {
         e.preventDefault();
         navigate('/register');
     };
-    
+
     return (
         <div className="auth-container">
             <div className="auth-card">
                 <h2>Login to Your Account</h2>
                 <p className="auth-subtitle">Welcome back! Please enter your details.</p>
-                
-                {error && <div className="error-message" style={{color: 'red', marginBottom: '10px'}}>{error}</div>}
-                
+
+                {error && <div className="error-message" style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
+
                 <form onSubmit={handleSubmit} className="auth-form">
                     <div className="form-group">
                         <label htmlFor="email">Email Address</label>
@@ -65,7 +66,7 @@ const Login = () => {
                             onChange={handleChange}
                             placeholder="xyz@gmail.com"
                             required
-                            disabled={loading}  
+                            disabled={loading}
                         />
                     </div>
 
@@ -79,7 +80,7 @@ const Login = () => {
                             onChange={handleChange}
                             placeholder="Enter the password"
                             required
-                            disabled={loading}  
+                            disabled={loading}
                         />
                     </div>
                     <div className="form-options">
@@ -89,12 +90,12 @@ const Login = () => {
                         <a href="#forget" className="forget-link">Forget password</a>
                     </div>
                     <button type="Submit" className="auth-button" disabled={loading}>
-                        {loading ? 'Logging in...' : 'Sign In'} 
+                        {loading ? 'Logging in...' : 'Sign In'}
                     </button>
                     <div className="auth-divider">
                         <span>or</span>
                     </div>
-                        <p>Don't have an account <a href="#register" className="auth-link" onClick={handleRegisterClick}>Sign Up</a></p>
+                    <p>Don't have an account <a href="#register" className="auth-link" onClick={handleRegisterClick}>Sign Up</a></p>
                 </form>
             </div>
         </div>
