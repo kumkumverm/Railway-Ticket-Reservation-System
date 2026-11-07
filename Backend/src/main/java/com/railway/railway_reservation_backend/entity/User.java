@@ -26,6 +26,6 @@ public class User {
      private String phoneNumber;
      private String role;
      @CreatedDate
-     private LocalDateTime createAt;
+     private LocalDateTime createdAt;
      private boolean active =true;
 }
