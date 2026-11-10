@@ -10,19 +10,22 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-
-@Data
-@Document(collection="bookings")
+@Getter
+@Setter
+@Document(collection = "bookings")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Booking {
     @Id
     private String id;
+
     @Indexed(unique = true)
     private String bookingNumber;
+
     @Indexed
     private String trainId;
 
@@ -32,27 +35,32 @@ public class Booking {
     private LocalDateTime journeyDate;
     private Double totalAmount;
     private String status;// CONFIRMED, CANCELLED, WAITING
+    private String travelClass;
+    @Indexed 
     private String userId;
-
-    //Nested documents
+    // Nested documents
     private List<Passenger> passengers;
     private PaymentInfo payment;
- //Inner class for passengers
- @Data
- @NoArgsConstructor
- @AllArgsConstructor
-    public static class Passenger{
-        private String name;
-        private Integer age;
-       private String gender;
-       private String seatNumber;
-       private String idProof;
-    }
-    //Inner class for payment
-    @Data
+
+    // Inner class for passengers
+    @Getter 
+    @Setter 
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class PaymentInfo{
+    public static class Passenger {
+        private String name;
+        private Integer age;
+        private String gender;
+        private String seatNumber;
+        private String idProof;
+    }
+
+    // Inner class for payment
+    @Getter 
+    @Setter 
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class PaymentInfo {
         private String paymentId;
         private Double amount;
         private LocalDateTime payDate;

@@ -2,6 +2,9 @@ package com.railway.railway_reservation_backend.service;
 
 import com.railway.railway_reservation_backend.repository.BookingRepository;
 import com.railway.railway_reservation_backend.repository.UserRepository;
+
+import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,48 +23,50 @@ import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
-@Service 
-@RequiredArgsConstructor 
+@Service
+@RequiredArgsConstructor
 public class AdminService {
     private final BookingRepository bookingRepository;
     private final UserRepository userRepository;
     private final TrainRepository trainRepository;
     private final PasswordEncoder passwordEncoder;
-    public void checkAdmin(HttpSession session){
-        String role=(String) session.getAttribute("userRole");
-        if(!"ADMIN".equals(role)){
+
+    public void checkAdmin(HttpSession session) {
+        String role = (String) session.getAttribute("userRole");
+        if (!"ADMIN".equals(role)) {
             throw new ResponseStatusException(
-                HttpStatus.FORBIDDEN,
-                "Admin access required"
-            );
+                    HttpStatus.FORBIDDEN,
+                    "Admin access required");
         }
     }
-    public List<Train> getAllTrains(HttpSession session){
+
+    public List<Train> getAllTrains(HttpSession session) {
         checkAdmin(session);
         return trainRepository.findAll();
     }
 
-    public List<UserResponse> getAllUsers(HttpSession session){
+    public List<UserResponse> getAllUsers(HttpSession session) {
         checkAdmin(session);
         return userRepository.findAll()
-        .stream()
-        .map(user->new UserResponse(
-            user.getId(),
-            user.getFullName(),
-            user.getEmail(),
-            user.getRole()
-        ))
-        .toList();
+                .stream()
+                .map(user -> new UserResponse(
+                        user.getId(),
+                        user.getFullName(),
+                        user.getEmail(),
+                        user.getRole()))
+                .toList();
     }
-    public Map<String,Object> getDashboardStats(HttpSession session){
+
+    public Map<String, Object> getDashboardStats(HttpSession session) {
         checkAdmin(session);
-        Map<String,Object> stats= new HashMap<>();
-        stats.put("totalUsers",userRepository.count());
-        stats.put("totalTrains",trainRepository.count());
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("totalUsers", userRepository.count());
+        stats.put("totalTrains", trainRepository.count());
         stats.put("totalBookings", bookingRepository.count());
         return stats;
     }
-        @PostConstruct
+
+    @PostConstruct
     public void initData() {
         // Create admin user
         if (!userRepository.existsByEmail("admin@railway.com")) {
@@ -74,7 +79,7 @@ public class AdminService {
             userRepository.save(admin);
             System.out.println(" Admin created: admin@railway.com / admin123");
         }
-        
+
         // Create sample user
         if (!userRepository.existsByEmail("user@example.com")) {
             User user = new User();
@@ -86,7 +91,7 @@ public class AdminService {
             userRepository.save(user);
             System.out.println("User created: user@example.com / user123");
         }
-        
+
         // Create sample trains
         if (trainRepository.count() == 0) {
             Train train1 = new Train();
@@ -94,20 +99,25 @@ public class AdminService {
             train1.setTrainName("Rajdhani Express");
             train1.setSource("Delhi");
             train1.setDestination("Mumbai");
-            train1.setTotalSeats(120);
-            train1.setAvailableSeats(120);
-            train1.setFare(2500.0);
-            
+            train1.setClasses(Arrays.asList(
+                    new Train.ClassDetails("1A", 3500.0, 20, 20),
+                    new Train.ClassDetails("2A", 2500.0, 40, 40),
+                    new Train.ClassDetails("3A", 1850.0, 60, 60)));
+                    train1.setDepartureTime(LocalTime.of(16, 55));
+train1.setDaysRunning("Daily");
+
             Train train2 = new Train();
             train2.setTrainNumber("12627");
             train2.setTrainName("Karnataka Express");
             train2.setSource("Delhi");
             train2.setDestination("Bangalore");
-            train2.setTotalSeats(100);
-            train2.setAvailableSeats(100);
-            train2.setFare(3200.0);
-            
-            trainRepository.saveAll(List.of(train1, train2));
+            train2.setClasses(Arrays.asList(
+                    new Train.ClassDetails("1A", 3500.0, 20, 20),
+                    new Train.ClassDetails("2A", 2500.0, 40, 40),
+                    new Train.ClassDetails("3A", 1850.0, 60, 60)));
+train2.setDepartureTime(LocalTime.of(20, 20));
+train2.setDaysRunning("Daily");
+            trainRepository.saveAll(Arrays.asList(train1, train2));
             System.out.println("Sample trains created");
         }
     }

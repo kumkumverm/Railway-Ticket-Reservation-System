@@ -2,6 +2,7 @@
 package com.railway.railway_reservation_backend.entity;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,23 +11,36 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document(collection="trains")
+@Document(collection = "trains")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Train {
     @Id
     private String id;
- private String trainNumber;
- private String trainName;
- private String source;
- private String destination;
- private LocalTime departureTime;
- private Integer totalSeats;
- private Integer availableSeats;
- private Double fare;
- private String trainClass;
- private String daysRunning;
- private boolean active=true;
+    private String trainNumber;
+    private String trainName;
+    private String source;
+    private String destination;
+    private LocalTime departureTime;
+    private String daysRunning;
+    private boolean active = true;
 
+    // Temporary legacy fields: remove after migrating old code
+    private Integer totalSeats;
+    private Integer availableSeats;
+    private Double fare;
+    private String trainClass;
+
+    private List<ClassDetails> classes;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ClassDetails {
+        private String className;
+        private Double fare;
+        private Integer totalSeats;
+        private Integer availableSeats;
+    }
 }
